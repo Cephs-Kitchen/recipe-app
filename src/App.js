@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 import Recipes from './Recipes';
+const fetch = require('node-fetch');
 
 const App = () => {
   const APP_ID = 'be652e2b';
@@ -11,21 +12,45 @@ const App = () => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    getRecipes();
+      fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
+      .then(response => response.json())
+      .then(data => setRecipes(data.hits))
+    //FYI: Edaman.com API allows for 5 free queries per minute
+    //getRecipes();
   }, [query]);
 
-  const getRecipes = async () => {
-    const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-    const data = await response.json();
-    setRecipes(data.hits);
-  }//FYI: Edaman.com API allows for 5 free queries per minute
+  // const getRecipes = async () => {
+  //   const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+  //   const data = await response.json();
+  //   setRecipes(data.hits);
+  // }//FYI: Edaman.com API allows for 5 free queries per minute
+
+  /*
+useEffect(() => {
+    const fetchBusinesses = () => {
+       return fetch("theURL", {method: "GET"}
+    )
+      .then(res => normalizeResponseErrors(res))
+      .then(res => {
+        return res.json();
+      })
+      .then(rcvdBusinesses => {
+        // some stuff
+      })
+      .catch(err => {
+        // some error handling
+      });
+  };
+  fetchBusinesses();
+}, []);
+  */
 
   const updateSearch = (event) => {
     setSearch(event.target.value);
   }
 
   const getSearch = (event) => {
-    event.prevent.default();
+    event.preventDefault();
     setQuery(search);
     setSearch('');
   }
