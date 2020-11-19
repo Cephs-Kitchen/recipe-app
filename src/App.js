@@ -18,7 +18,7 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
-  }//FYI: Edaman.com allows for 5 free queries per minute
+  }//FYI: Edaman.com API allows for 5 free queries per minute
 
   const updateSearch = (event) => {
     setSearch(event.target.value);
