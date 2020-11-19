@@ -4,7 +4,7 @@ import Recipes from './Recipes';
 
 const App = () => {
   const APP_ID = 'be652e2b';
-  const APP_KEY = 'd0fe2ca390c4d1aec0dfad7965159103';
+  const APP_KEY = 'd0fe2ca390c4d1aec0dfad7965159103'; //FYI: These App ID and Key will only be valid for the duration of this course (19Oct2020-16Jan2021)
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
@@ -18,7 +18,7 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
-  }
+  }//FYI: Edaman.com allows for 5 free queries per minute
 
   const updateSearch = (event) => {
     setSearch(event.target.value);
