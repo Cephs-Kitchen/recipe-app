@@ -25,26 +25,6 @@ const App = () => {
   //   setRecipes(data.hits);
   // }//FYI: Edaman.com API allows for 5 free queries per minute
 
-  /*
-useEffect(() => {
-    const fetchBusinesses = () => {
-       return fetch("theURL", {method: "GET"}
-    )
-      .then(res => normalizeResponseErrors(res))
-      .then(res => {
-        return res.json();
-      })
-      .then(rcvdBusinesses => {
-        // some stuff
-      })
-      .catch(err => {
-        // some error handling
-      });
-  };
-  fetchBusinesses();
-}, []);
-  */
-
   const updateSearch = (event) => {
     setSearch(event.target.value);
   }
