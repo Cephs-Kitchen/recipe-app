@@ -1,10 +1,12 @@
 .App {
   min-height: 100vh;
-  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+  background: rgb(134,119,100);
+  background: linear-gradient(90deg, rgba(134,119,100,1) 0%, rgba(68,46,33,1) 100%);  
 }
 
 .page-title {
   text-align: center;
+  color: #791009;
 }
 
 .search-form {
@@ -22,11 +24,12 @@
 }
 
 .search-button {
-  background: #a18cd1;
-  border: cornsilk;
-  border-radius: 8px;
+  background: #ffebbc;
+  border: #feaf00;
+  border-radius: 10px;
+  border-width: 2px;
   padding: 10px 20px;
-  color: black;
+  color: #791009;
 }
 
 .recipes {
