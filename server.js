@@ -42,7 +42,15 @@ app.get('/FoodGroup', (req, res) => {
     });
 });
 
-
+app.get('/FoodGroup/:FoodGroupID', (req, res) => {
+    db.query('SELECT * FROM tbl_food_group WHERE tbl_food_group_id = $1', [req.params.FoodGroupID],
+    (db_error, db_result) => {
+        if(db_error) {
+            throw db_error
+        }
+        res.send(200).json(db_result.rows);
+    });
+});
 
 
 
