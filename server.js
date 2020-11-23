@@ -48,12 +48,12 @@ app.get('/FoodGroup', (req, res) => {
 });
 
 app.get('/FoodGroup/:name', (req, res) => {
-    db.query('SELECT * FROM tbl_food_group WHERE tbl_food_group_name = $1', [req.params.name],
+    db.query('SELECT * FROM tbl_food_group WHERE food_group_name = $1', [req.params.name],
     (db_error, db_result) => {
         if(db_error) {
             throw db_error
         }
-        res.send(200).json(db_result.rows);
+        res.status(200).json(db_result.rows);
     });
 });
 
