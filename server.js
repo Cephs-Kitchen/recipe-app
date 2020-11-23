@@ -10,6 +10,11 @@ const db = require('./db').getDB();
 const { get } = require('request');
 app.use(bodyParser.json());
 
+//Alleviating CORS issues
+const cors = require('cors');
+app.use(cors())
+app.options('*', cors())
+
 app.get('/', (req, res) => res.send("Welcome to Ceph's Citchen!"))
 
 //GET recipes
@@ -42,8 +47,8 @@ app.get('/FoodGroup', (req, res) => {
     });
 });
 
-app.get('/FoodGroup/:FoodGroupID', (req, res) => {
-    db.query('SELECT * FROM tbl_food_group WHERE tbl_food_group_id = $1', [req.params.FoodGroupID],
+app.get('/FoodGroup/:name', (req, res) => {
+    db.query('SELECT * FROM tbl_food_group WHERE tbl_food_group_name = $1', [req.params.name],
     (db_error, db_result) => {
         if(db_error) {
             throw db_error
