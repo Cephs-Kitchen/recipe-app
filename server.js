@@ -27,6 +27,16 @@ app.get('/Recipes', (req, res) => {
     });
 });
 
+app.get('/Recipes/:id', (req, res) => {
+    db.query('SELECT * FROM tbl_recipes WHERE food_group_id = $1', [req.params.id],
+    (db_error, db_result) => {
+        if(db_error) {
+            throw db_error
+        }
+        res.status(200).json(db_result.rows);
+    });
+});
+
 //GET recipes by pantry item
 app.get('/PantryList', (req, res) => {
     db.query('SELECT * FROM tbl_pantrylist', (db_error, db_result) => {
