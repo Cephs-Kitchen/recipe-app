@@ -1,7 +1,7 @@
 const Pool = require('pg').Pool;
 const db = new Pool({
     user: 'ceph',
-    host: 'database', //Update host as needed
+    host: 'locahost', //Update host as needed
     database: 'cephs_citchen',
     password: 'ceph',
     port: 5400 //Update as needed
