@@ -11,7 +11,7 @@ html, body, #root {
 .App {
   min-height: 100vh;
   background-color: #6d6050;
-  opacity: 0.9;  
+  opacity: 0.2;  
 }
 
 .page-title {
